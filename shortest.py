@@ -11,5 +11,11 @@ class TestShor(unittest.TestCase):
         print(factors)
         assert 5 in factors  and 11 in factors
 
+    def testShoresManySeeds(self):
+        for i in range(100):
+            factors = shors.shorfactor(55,seed=i)
+            print(factors)
+            assert 5 in factors and 11 in factors
+
 if __name__ == '__main__':
     unittest.main()

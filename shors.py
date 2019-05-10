@@ -3,15 +3,12 @@ import numpy as np
 import random
 
 
-print(np.__version__)
-print("hi")
 
 def shorfactor(n, seed=None):
     random.seed(seed)
     keepgoing = True
     guess1 = None
     guess2 = None
-    random.seed(3)
     while(keepgoing):
         g = random.randint(2,n-1)
         print("g is ",g)
