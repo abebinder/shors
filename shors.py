@@ -60,6 +60,12 @@ class superPosition():
 
 
 
+
+def generaterangeSuperPosition(n):
+    values = list(range(1,n+1))
+    return superPosition(values)
+
+
 # print(shorfactor(55))
 # a = superPosition([55,44])
 # print(a.collapseSuperposition())
