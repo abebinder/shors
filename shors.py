@@ -10,9 +10,14 @@ def shorfactor(n):
     keepgoing = True
     guess1 = None
     guess2 = None
+    random.seed(3)
     while(keepgoing):
-        random.seed(3)
         g = random.randint(2,n-1)
+        print("g is ",g)
+        common_den = np.gcd(g,n)
+        if(common_den!=1):
+            print("g shares a factor with n, breaking out")
+            return common_den, n//common_den
         p = findp(n,g)
         guess1 = g**(p//2) + 1
         print(guess1)
@@ -26,7 +31,7 @@ def shorfactor(n):
             continue
         keepgoing = False
     factor1 = np.gcd(guess1,n)
-    print(factor1, n//factor1)
+    return (factor1, n//factor1)
 
 
 def findp(n,g):
@@ -38,4 +43,16 @@ def findp(n,g):
 
 
 
-shorfactor(55)
+class superPosition():
+    def __init__(self,values):
+        self.values = values
+
+    def  collapseSuperposition(self):
+        return self.values[random.randint(0,len(self.values)-1)]
+
+
+
+
+print(shorfactor(55))
+a = superPosition([55,44])
+print(a.collapseSuperposition())
