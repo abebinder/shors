@@ -58,6 +58,15 @@ class superPosition():
         return str(self.values)
     def  collapseSuperposition(self):
         return self.values[random.randint(0,len(self.values)-1)]
+    def collapseTupleSuperPosition(self):
+        ran = random.randint(0,len(self.values)-1)
+        power, r = self.values[ran]
+        newvals = []
+        for elem in self.values:
+            if r ==elem[1]:
+                newvals.append(elem)
+        return superPosition(newvals)
+
 
 
 
