@@ -13,7 +13,7 @@ class TestStringMethods(unittest.TestCase):
         powers = shors.superPosition([1,2,3,4])
         a = 5
         superposraisedpow = shors.superpositionPow(a,powers,modulo=7)
-        print(superposraisedpow)
+        assert(superposraisedpow.values==[(1, 5), (2, 4), (3, 6), (4, 2)])
 
 if __name__ == '__main__':
     unittest.main()

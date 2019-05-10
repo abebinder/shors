@@ -6,7 +6,8 @@ import random
 print(np.__version__)
 print("hi")
 
-def shorfactor(n):
+def shorfactor(n, seed=None):
+    random.seed(seed)
     keepgoing = True
     guess1 = None
     guess2 = None
@@ -56,8 +57,6 @@ class superPosition():
         self.values = values
     def __str__(self):
         return str(self.values)
-
-
     def  collapseSuperposition(self):
         return self.values[random.randint(0,len(self.values)-1)]
 
