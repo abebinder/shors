@@ -17,6 +17,8 @@ def shorfactor(n, seed=None):
             print("g shares a factor with n, breaking out")
             return common_den, n//common_den
         p = findp(n,g)
+        print("p is %d"%p)
+        findpQuantum(n,g)
         guess1 = g**(p//2) + 1
         print(guess1)
         guess2 = g**(p//2) - 1
@@ -64,6 +66,13 @@ class superPosition():
 def generaterangeSuperPosition(n):
     values = list(range(1,n+1))
     return superPosition(values)
+
+def findpQuantum(n,g):
+    print("shadowing quantum")
+    powerpos = generaterangeSuperPosition(n)
+    raisedpows = superpositionPow(g,powerpos,modulo=n)
+    print("raised pows",raisedpows)
+
 
 
 # print(shorfactor(55))

@@ -17,5 +17,10 @@ class TestShor(unittest.TestCase):
             print(factors)
             assert 5 in factors and 11 in factors
 
+    def testshorShadowQuantum(self):
+        factors = shors.shorfactor(21, seed=5)
+        print(factors)
+        assert 3 in factors
+
 if __name__ == '__main__':
     unittest.main()
