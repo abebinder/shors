@@ -43,9 +43,20 @@ def findp(n,g):
 
 
 
+def superpositionPow(g,sp,modulo=None):
+    result = []
+    for elem in sp.values:
+        result.append((elem,pow(g,elem,modulo)))
+    return superPosition(result)
+
+
+
 class superPosition():
     def __init__(self,values):
         self.values = values
+    def __str__(self):
+        return str(self.values)
+
 
     def  collapseSuperposition(self):
         return self.values[random.randint(0,len(self.values)-1)]
@@ -53,6 +64,6 @@ class superPosition():
 
 
 
-print(shorfactor(55))
-a = superPosition([55,44])
-print(a.collapseSuperposition())
+# print(shorfactor(55))
+# a = superPosition([55,44])
+# print(a.collapseSuperposition())
