@@ -35,7 +35,9 @@ class TestStringMethods(unittest.TestCase):
         assert collapse.values[0][1] == collapse.values[1][1] == collapse.values[2][1]
 
 
-
+    def testCheatingShors(self):
+        spacepos = shors.superPosition([(1,5),(6,5),(11,5)])
+        assert shors.cheatingFourierTransform(spacepos, 20) == 5
 
 
 if __name__ == '__main__':
