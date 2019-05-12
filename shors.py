@@ -81,6 +81,15 @@ def findpQuantum(n,g):
     powerpos = generaterangeSuperPosition(n)
     raisedpows = superpositionPow(g,powerpos,modulo=n)
     print("raised pows",raisedpows)
+    collapse = raisedpows.collapseTupleSuperPosition()
+    print("collapsed raised pows",collapse)
+    p = cheatingFourierTransform(collapse, n)
+    print("quantum p found to be",p)
+    return p
+
+
+def cheatingFourierTransform(sup,n):
+    return (sup.values[1][0] - sup.values[0][0]) % n
 
 
 
