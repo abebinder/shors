@@ -7,7 +7,7 @@ import unittest
 class TestShor(unittest.TestCase):
 
     def testshorsworksimperitive(self):
-        factors = shors.shorfactor(55,1)
+        factors = shors.shorfactor(55,seed=1)
         print(factors)
         assert 5 in factors  and 11 in factors
 
