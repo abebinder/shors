@@ -92,9 +92,9 @@ def findpQuantum(n,g):
     if VERBOSE: print("shadowing quantum")
     powerpos = generaterangeSuperPosition(n)
     raisedpows = superpositionPow(g,powerpos,modulo=n)
-    #print("raised pows",raisedpows)
+    if VERBOSE: print("raised pows",raisedpows)
     collapse = raisedpows.collapseTupleSuperPosition()
-    #print("collapsed raised pows",collapse)
+    if VERBOSE: print("collapsed raised pows",collapse)
     p = cheatingFourierTransform(collapse, n)
     if VERBOSE: print("quantum p found to be",p)
     return p
