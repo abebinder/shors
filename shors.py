@@ -91,6 +91,10 @@ def findpQuantum(n,g):
 def cheatingFourierTransform(sup,n):
     return (sup.values[1][0] - sup.values[0][0]) % n
 
+def realFourierTransform(sup,n):
+    pass
+
+
 
 
 # print(shorfactor(55))
