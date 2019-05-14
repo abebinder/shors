@@ -9,7 +9,7 @@ import math
 VERBOSE = False
 steps = 0
 
-def shorfactor(n, p_alg, seed=None):
+def shorfactor(n, p_alg=findp, seed=None):
     random.seed(seed)
     keepgoing = True
     guess1 = None
@@ -102,6 +102,11 @@ def findpQuantum(n,g):
 
 def cheatingFourierTransform(sup,n):
     return (sup.values[1][0] - sup.values[0][0]) % n
+
+def realFourierTransform(sup,n):
+    pass
+
+
 
 def bruteFactor(N):
     g = 2
