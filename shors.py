@@ -3,6 +3,8 @@ import numpy as np
 import random
 import util
 import time
+import matplotlib.pyplot as plt
+import math
 
 VERBOSE = False
 steps = 0
@@ -45,8 +47,7 @@ def findp(n,g):
     for i in range(1,n):
         global steps
         steps += 1
-        raisedpow = g**i
-        remainder = raisedpow % n
+        remainder = pow(g,i,n)
         if (remainder ==1):
             return i
 
@@ -111,6 +112,7 @@ def bruteFactor(N):
 
 
 def timeAlg(alg, N, p_func = None):
+    global steps
     print("Running " + alg.__name__)
     time1 = time.time()
     if p_func == None:
@@ -119,18 +121,54 @@ def timeAlg(alg, N, p_func = None):
         print("With " + p_func.__name__)
         alg(N, p_func)
     time2 = time.time()
+    total_time = (time2-time1)
     print("Time was: " + str(time2 - time1))
-    global steps
+    returnSteps = steps
     print("Steps were: ", steps)
     steps = 0
     print("")
+    return (returnSteps, total_time)
 
 def main():
-    N = util.getN(7)
-    print("")
-    timeAlg(bruteFactor, N)
-    timeAlg(shorfactor, N, findp)
-    timeAlg(shorfactor, N, findpQuantum)
+    n_vals = range(3,8)
+    bruteTimes = []
+    bruteSteps = []
+    tradSteps = []
+    tradTimes = []
+    quantumSteps = []
+    quantumTimes = []
+    for n in n_vals:
+        N = util.getN(n)
+        print("")
+        bruteData = timeAlg(bruteFactor, N)
+        bruteSteps.append(bruteData[0])
+        bruteTimes.append(bruteData[1])
+        tradData = timeAlg(shorfactor, N, findp)
+        tradSteps.append(tradData[0])
+        tradTimes.append(tradData[1])
+        quantumData = timeAlg(shorfactor, N, findpQuantum)
+        quantumSteps.append(quantumData[0])
+        quantumTimes.append(quantumData[1])
+    print(bruteSteps, tradSteps, quantumSteps)
+    plt.title("steps vs n bits")
+    plt.plot(n_vals, quantumSteps)
+    plt.plot(n_vals, bruteSteps)
+    plt.plot(n_vals, tradSteps)
+    plt.legend(('quantum', "brute", "traditional"))
+    plt.xlabel('bits of N')
+    plt.ylabel('steps')
+    plt.show()
+
+    plt.title("time vs n bits")
+    plt.plot(n_vals, quantumTimes)
+    plt.plot(n_vals, bruteTimes)
+    plt.plot(n_vals, tradTimes)
+    plt.xlabel('bits of N')
+    plt.ylabel('time')
+    plt.legend(('quantum', "brute", "traditional"))
+    plt.show()
+
+
 
 
 if __name__ == "__main__":
